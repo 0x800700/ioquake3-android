@@ -10,6 +10,7 @@ import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.StateListDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -317,12 +318,25 @@ public class LauncherActivity extends Activity {
         btn.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
         btn.setTypeface(Typeface.DEFAULT_BOLD);
         btn.setAllCaps(false);
+        btn.setFocusable(true);
+        btn.setFocusableInTouchMode(true);
 
-        GradientDrawable bg = new GradientDrawable();
-        bg.setCornerRadius(dpToPx(8));
-        bg.setColor(Color.parseColor(startColor));
-        bg.setStroke(dpToPx(1), Color.parseColor("#FFCC80"));
-        btn.setBackground(bg);
+        GradientDrawable normalBg = new GradientDrawable();
+        normalBg.setCornerRadius(dpToPx(8));
+        normalBg.setColor(Color.parseColor(startColor));
+        normalBg.setStroke(dpToPx(1), Color.parseColor("#FFCC80"));
+
+        GradientDrawable focusedBg = new GradientDrawable();
+        focusedBg.setCornerRadius(dpToPx(8));
+        focusedBg.setColor(Color.parseColor("#E65100")); // Quake Deep Orange highlight for TV remote
+        focusedBg.setStroke(dpToPx(3), Color.WHITE);
+
+        StateListDrawable states = new StateListDrawable();
+        states.addState(new int[]{android.R.attr.state_focused}, focusedBg);
+        states.addState(new int[]{android.R.attr.state_pressed}, focusedBg);
+        states.addState(new int[]{}, normalBg);
+
+        btn.setBackground(states);
         return btn;
     }
 

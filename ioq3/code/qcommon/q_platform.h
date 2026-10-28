@@ -199,7 +199,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # define ARCH_STRING "arm64"
 #elif defined(__arm__)
 # define ARCH_STRING "arm"
-# define HAVE_VM_COMPILED
+# ifndef __ANDROID__
+#  define HAVE_VM_COMPILED
+# endif
 #elif defined(__powerpc64__) || defined(__ppc64__)
 # define ARCH_STRING "ppc64"
 # define HAVE_VM_COMPILED
