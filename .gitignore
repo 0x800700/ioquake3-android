@@ -1,0 +1,56 @@
+# ==========================================
+# Android & Gradle Build Artifacts
+# ==========================================
+.gradle/
+build/
+android/build/
+android/app/build/
+android/app/.cxx/
+android/.gradle/
+local.properties
+*.iml
+.idea/
+captures/
+.externalNativeBuild/
+
+# ==========================================
+# Proprietary Game Data & Archives
+# (Strictly ignored for copyright compliance)
+# ==========================================
+game_data/
+*.pk3
+*.pk3dir
+*.zip
+*.7z
+releases/*.zip
+releases/*.apk
+
+# ==========================================
+# System & Editor Files
+# ==========================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*~
+*.swp
+*.bak
+*.orig
+
+# ==========================================
+# Logs & Environment
+# ==========================================
+*.log
+.env
+.env.*
+
+# ==========================================
+# Local development tools / non-project
+# ==========================================
+ai-bridge/
+screenshot-studio/
+tmp/
+scratch/

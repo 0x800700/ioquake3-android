@@ -1,0 +1,17 @@
+FROM ghcr.io/cirruslabs/android-sdk:34-ndk
+
+# Install CMake for Android NDK and system utilities
+RUN sdkmanager "cmake;3.22.1" "ninja" || true
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    cmake \
+    ninja-build \
+    git \
+    zip \
+    unzip \
+    && rm -rf /var/lib/apt/lists/*
+
+ENV ANDROID_NDK_HOME=/opt/android-sdk-linux/ndk/26.2.11394342
+ENV PATH=/opt/android-sdk-linux/cmake/3.22.1/bin:$PATH
+
+WORKDIR /workspace
